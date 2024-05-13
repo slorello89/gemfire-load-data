@@ -28,7 +28,7 @@ public class App
         }
 
 
-        try(ClientCache cache = new ClientCacheFactory().addPoolLocator("localhost", 10334).create()){
+        try(ClientCache cache = new ClientCacheFactory().addPoolLocator(gemfireHost, gemfirePort).create()){
             Region<String, Map<String,Object>> region = cache.<String,Map<String,Object>>createClientRegionFactory(ClientRegionShortcut.PROXY).create("testRegion");
             int i = 0;
             while(true){
