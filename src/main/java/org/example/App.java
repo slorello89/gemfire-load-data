@@ -30,6 +30,7 @@ public class App
 
         try(ClientCache cache = new ClientCacheFactory().addPoolLocator(gemfireHost, gemfirePort).create()){
             Region<String, Map<String,Object>> region = cache.<String,Map<String,Object>>createClientRegionFactory(ClientRegionShortcut.PROXY).create("testRegion");
+            Region<String, Customer> customerRegion = cache.<String,Customer>createClientRegionFactory(ClientRegionShortcut.PROXY).create("customerRegion");
             int i = 0;
             while(true){
                 Map<String,Object> entry = new HashMap<>();
@@ -38,6 +39,7 @@ public class App
                 entry.put("id", UUID.randomUUID());
                 String keyName = String.format("entry:%d",i);
                 region.put(keyName, entry);
+                customerRegion.put(String.format("customer:%d", i), new Customer(String.format("foobar:%d", i), i, UUID.randomUUID()));
                 Map<String,Object> rematerialied = region.get(keyName);
                 System.out.println(rematerialied);
                 Thread.sleep(5000);
