@@ -41,7 +41,9 @@ public class App
                 region.put(keyName, entry);
                 customerRegion.put(String.format("customer:%d", i), new Customer(String.format("foobar:%d", i), i, UUID.randomUUID()));
                 Map<String,Object> rematerialied = region.get(keyName);
+                Customer customerRematerialized = customerRegion.get(String.format("customer:%d", i));
                 System.out.println(rematerialied);
+                System.out.println(customerRematerialized);
                 Thread.sleep(5000);
                 i++;
             }
