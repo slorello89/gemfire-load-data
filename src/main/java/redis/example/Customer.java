@@ -1,4 +1,4 @@
-package org.example;
+package redis.example;
 
 import java.io.Serializable;
 import java.util.UUID;

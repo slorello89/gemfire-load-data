@@ -1,4 +1,4 @@
-package org.example;
+package redis.example;
 
 import org.apache.geode.cache.Region;
 import org.apache.geode.cache.client.ClientCache;
@@ -29,8 +29,9 @@ public class App
 
 
         try(ClientCache cache = new ClientCacheFactory().addPoolLocator(gemfireHost, gemfirePort).create()){
-            Region<String, Map<String,Object>> region = cache.<String,Map<String,Object>>createClientRegionFactory(ClientRegionShortcut.PROXY).create("testRegion");
-            Region<String, Customer> customerRegion = cache.<String,Customer>createClientRegionFactory(ClientRegionShortcut.PROXY).create("customerRegion");
+            Region<String, Map<String,Object>> region = cache.<String,Map<String,Object>>createClientRegionFactory(ClientRegionShortcut.PROXY).create("test");
+//            Region<String, Customer> customerRegion = cache.<String,Customer>createClientRegionFactory(ClientRegionShortcut.PROXY).create("customerRegion");
+            region.registerInterestForAllKeys();
             int i = 0;
             while(true){
                 Map<String,Object> entry = new HashMap<>();
@@ -39,11 +40,11 @@ public class App
                 entry.put("id", UUID.randomUUID());
                 String keyName = String.format("entry:%d",i);
                 region.put(keyName, entry);
-                customerRegion.put(String.format("customer:%d", i), new Customer(String.format("foobar:%d", i), i, UUID.randomUUID()));
+//                customerRegion.put(String.format("customer:%d", i), new Customer(String.format("foobar:%d", i), i, UUID.randomUUID()));
                 Map<String,Object> rematerialied = region.get(keyName);
-                Customer customerRematerialized = customerRegion.get(String.format("customer:%d", i));
+//                Customer customerRematerialized = customerRegion.get(String.format("customer:%d", i));
                 System.out.println(rematerialied);
-                System.out.println(customerRematerialized);
+//                System.out.println(customerRematerialized);
                 Thread.sleep(5000);
                 i++;
             }
