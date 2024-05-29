@@ -10,6 +10,7 @@ docker run \
 -v $(pwd)/jars:/opt/redislabs/redis-connect/extlib \
 --net host \
 -p 8241:8242 \
+-d \
 redislabs/redis-connect start
 
 docker run \
@@ -19,4 +20,5 @@ docker run \
 -v $(pwd)/jars:/opt/redislabs/redis-connect/extlib \
 --net host \
 -p 8242:8242 \
+-d \
 redislabs/redis-connect start
