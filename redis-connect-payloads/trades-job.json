@@ -5,14 +5,14 @@
     "stages": [
       {
         "index": 1,
-        "stageName": "OBJECT_TO_MAP_STAGE",
+        "stageName": "GEMFIRE_HASH_PREP_STAGE",
         "userDefinedType": "CUSTOM",
         "metricsEnabled": false
       },
       {
         "database": {
           "credentialsDirectoryPath" : "/opt/redislabs/redis-connect/config/credentials",
-          "databaseURL": "redis://127.0.0.1:14000",
+          "databaseURL": "redis://redis:12000",
           "databaseType": "REDIS",
           "customConfiguration": {
             "redis.connection.sslEnabled": false,
@@ -20,7 +20,7 @@
           }
         },
         "index": 2,
-        "stageName": "REDIS_JSON_SINK",
+        "stageName": "REDIS_HASH_SINK",
         "checkpointStageIndicator": true,
         "metricsEnabled" : true
       }
@@ -36,7 +36,7 @@
       }
     },
     "tables": {
-      "trades": {
+      "test": {
         "initialLoad": {
           "partitions": 1,
           "maxPartitionsPerClusterMember": 1
