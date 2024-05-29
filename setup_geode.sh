@@ -37,6 +37,7 @@ docker run \
   -p "${cache_server_port}":40404 \
   --entrypoint sh \
   --network redis-connect \
+  --hostname geode \
   -d apachegeode/geode:"${version}" -c "/geode/scripts/forever"
 
 sleep 5
