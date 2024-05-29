@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cp ./target/Trades2Geode-1.0.jar ./jars
-chmod +w ./jars/Trades2Geode-1.0.jar
+cp ./target/stream-data-to-geode-1.0-SNAPSHOT.jar ./jars
+chmod +w ./jars/stream-data-to-geode-1.0-SNAPSHOT.jar
 
 docker run \
 -it --rm --privileged=true \
