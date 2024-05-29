@@ -31,7 +31,7 @@ docker run -d \
 	-p 14000-14001:12000-12001 \
 	-p 18070:8070 \
 	--network redis-connect \
-	--alias redis \
+	--hostname redis \
 	redislabs/redis:"${version}"
 
 while ! nc -vz localhost 18443 < /dev/null
