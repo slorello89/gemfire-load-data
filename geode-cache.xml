@@ -11,7 +11,7 @@
             <class-name>org.apache.geode.pdx.ReflectionBasedAutoSerializer</class-name>
         </pdx-serializer>
     </pdx>
-    <region name="trades">
+    <region name="test">
         <region-attributes refid="PARTITION">
             <key-constraint>java.lang.String</key-constraint>
             <value-constraint>java.util.Map</value-constraint>
