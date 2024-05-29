@@ -14,7 +14,7 @@
     <region name="trades">
         <region-attributes refid="PARTITION">
             <key-constraint>java.lang.String</key-constraint>
-            <value-constraint>redis.geode.Trade</value-constraint>
+            <value-constraint>java.util.Map</value-constraint>
         </region-attributes>
     </region>
 </cache>
