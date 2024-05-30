@@ -49,6 +49,6 @@ docker cp target/Trades2Geode-1.0.jar "${container_name}":Trades2Geode-1.0.jar #
 docker cp jars/gemfire-initial-load-function-0.10.1.jar "${container_name}":gemfire-initial-load-function-0.10.1.jar
 
 echo "Starting locator1, server1 and deploying client function for the load job.."
-docker exec --user root "${container_name}" sh -c "gfsh -e 'start locator --name=locator1 --hostname-for-clients=localhost' -e 'deploy --jar=./gemfire-initial-load-function-0.10.1.jar' -e 'start server --name=server1 --cache-xml-file=./cache.xml --hostname-for-clients=localhost' -e 'list functions'"
+docker exec --user root "${container_name}" sh -c "gfsh -e 'start locator --name=locator1 --hostname-for-clients=geode' -e 'deploy --jar=./gemfire-initial-load-function-0.10.1.jar' -e 'start server --name=server1 --cache-xml-file=./cache.xml --hostname-for-clients=geode' -e 'list functions'"
 
 echo "done"
