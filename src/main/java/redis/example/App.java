@@ -16,7 +16,7 @@ import java.util.UUID;
 public class App 
 {
     public static void main( String[] args ) throws Exception {
-        String gemfireHost = "localhost";
+        String gemfireHost = "geode";
         int gemfirePort = 10334;
 
         if(System.getProperty("gemfire.host") != null){
@@ -28,6 +28,7 @@ public class App
         }
 
 
+        System.out.println(String.format("connecting to geode on %s port %d", gemfireHost, gemfirePort));
         try(ClientCache cache = new ClientCacheFactory().addPoolLocator(gemfireHost, gemfirePort).setPoolSubscriptionEnabled(true).create()){
             Region<String, Map<String,Object>> region = cache.<String,Map<String,Object>>createClientRegionFactory(ClientRegionShortcut.PROXY).create("test");
 //            Region<String, Customer> customerRegion = cache.<String,Customer>createClientRegionFactory(ClientRegionShortcut.PROXY).create("customerRegion");
