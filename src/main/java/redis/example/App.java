@@ -46,7 +46,7 @@ public class App
 //                Customer customerRematerialized = customerRegion.get(String.format("customer:%d", i));
                 System.out.println(rematerialied);
 //                System.out.println(customerRematerialized);
-                Thread.sleep(5000);
+                Thread.sleep(500);
                 i++;
             }
         }

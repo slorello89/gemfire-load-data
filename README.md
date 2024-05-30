@@ -26,7 +26,8 @@ mvn clean package install
 To run the app just run:
 
 ```bash
-mvn exec:java
+docker build -t stream-data .
+docker run --network redis-connect stream-data
 ```
 
 ## Run Redis Connect:
