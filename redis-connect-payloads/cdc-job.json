@@ -1,5 +1,5 @@
 {
-  "partitions": 1,
+  "partitions": 2,
   "maxPartitionsPerClusterMember": 1,
   "pipeline": {
     "stages": [
@@ -38,7 +38,7 @@
     "tables": {
       "test": {
         "initialLoad": {
-          "partitions": 1,
+          "partitions": 2,
           "maxPartitionsPerClusterMember": 1
         },
         "autoConfigColumnsEnabled": true
