@@ -34,7 +34,7 @@ public class App
 //            Region<String, Customer> customerRegion = cache.<String,Customer>createClientRegionFactory(ClientRegionShortcut.PROXY).create("customerRegion");
             region.registerInterestForAllKeys();
             int i = 0;
-            while(true){
+            while(i<1000000){
                 Map<String,Object> entry = new HashMap<>();
                 entry.put("name", String.format("foobar:%d", i));
                 entry.put("num", i);
@@ -46,7 +46,7 @@ public class App
 //                Customer customerRematerialized = customerRegion.get(String.format("customer:%d", i));
                 System.out.println(rematerialied);
 //                System.out.println(customerRematerialized);
-                Thread.sleep(50);
+//                Thread.sleep(50);
                 i++;
             }
         }
